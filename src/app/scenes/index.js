@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Dashboard from './Dashboard';
+import CharacterList from './Character/CharacterList';
 
 class RootScene extends Component {
 
@@ -11,6 +12,8 @@ class RootScene extends Component {
     switch(page) {
       case 'DASHBOARD':
         return <Dashboard />
+      case 'CHARACTERS':
+        return <CharacterList />
       default:
         return <Dashboard />
     }

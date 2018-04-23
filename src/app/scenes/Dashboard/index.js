@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { navigate } from '../../actions/menu';
+import { navigate, setCharacters } from '../../actions/menu';
 import Post from '../../components/Post';
+import Search from '../../components/Search';
+import CharacterList from '../Character/CharacterList';
 
 export class Dashboard extends Component {
 
   render() {
     return (
       <div className="dashboard__container">
+        <Search />
+        <CharacterList />
         <Post>
-          Dashboard bro!
-        </Post>
-        <Post>
-          To get started, open up '/src/app/scenes/Dashboard/index.js' and modifiy the text!
-        </Post>
-        <Post>
-          To start editting the CSS, open up '/src/app/styles/components/_dashboard.scss' and modify that!
-        </Post>
-        <Post>
-          <button style={{padding: 10}} onClick={() => this.props.navigate('DASHBOARD')}>
-            Sample Navigation Button!
+          <button style={{padding: 10}} onClick={() => this.props.navigate('CHARACTERS')}>
+            Character List
           </button>
-          <button style={{padding: 10}} onClick={() => this.props.navigate('PROFILE')}>
-            Sample Navigation Button!
+          <button style={{padding: 10}} onClick={() => this.props.setCharacters([{name: 'julio', id: 1}])}>
+            Set Characters
           </button>
-        </Post>
-        <Post>
-          Happy coding! :)
         </Post>
       </div>
     )
@@ -37,4 +29,4 @@ const mapStateToProps = (state) => {
   return Object.assign({},state);
 }
 
-export default connect(mapStateToProps, {navigate})(Dashboard);
+export default connect(mapStateToProps, {navigate, setCharacters})(Dashboard);
